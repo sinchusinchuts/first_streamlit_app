@@ -27,8 +27,7 @@ streamlit.dataframe(fruits_to_show)
 def get_fruityvice_data(this_fruit_choice):
   fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + this_fruit_choice)
   fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
-  return fruityvice_normalized
-  
+  return fruityvice_normalized 
 streamlit.header("Fruityvice Fruit Advice!")
 try:
   fruit_choice = streamlit.text_input('What fruit would you like information about?')
@@ -36,18 +35,13 @@ try:
     streamlit.error("please select a fruit to get information.")
   else:
     back_from_function = get_fruityvise_data(fruit_choice)
-    streamlit.dataframe(back_from_function)
-    
+    streamlit.dataframe(back_from_function)    
 except URLError as e:
   streamlit.error()
-      
-
+    
 streamlit.stop()
 
 #import snowflake.connector
-
-
-
 
 streamlit.header("The fruit load list contains:")
 def insert_row_snowflake(new_fruit):
